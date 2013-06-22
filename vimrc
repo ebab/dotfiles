@@ -18,14 +18,14 @@ Bundle 'vombato-colorscheme'
 "Bundle 'tpope/vim-speeddating'
 "Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/zencoding-vim'
 "Bundle 'kien/ctrlp.vim'
-"Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-pandoc/vim-pandoc'
 "Bundle 'Valloric/YouCompleteMe'
 "Bundle 'SirVer/ultisnips'
 "Bundle 'guns/vim-clojure-static'
-"Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
 
 command! -nargs=1 Silent
@@ -166,8 +166,8 @@ set autoread
 "set hidden
 
 " GUI options
-" set guifont=DejaVu\ Sans\ Mono\ 10
- set guifont=Source\ Code\ Pro\ 10
+set guifont=DejaVu\ Sans\ Mono\ 10
+" set guifont=Source\ Code\ Pro\ 10
 set guioptions-=m " Remove menubar
 set guioptions-=T " Remove toolbar
 set guioptions-=r " Remove right-hand scrollbar
