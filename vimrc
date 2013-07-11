@@ -11,6 +11,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'vombato-colorscheme'
+Bundle 'vim-scripts/wombat256.vim'
 "Bundle 'tpope/vim-fugitive'
 "Bundle 'tpope/vim-surround'
 "Bundle 'tpope/vim-repeat'
@@ -27,6 +28,7 @@ Bundle 'vim-pandoc/vim-pandoc'
 "Bundle 'guns/vim-clojure-static'
 Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'bling/vim-airline'
 
 command! -nargs=1 Silent
 \ | execute ':silent !'.<q-args>
@@ -75,8 +77,13 @@ let maplocalleader=","
 set spelllang=en,de
 set spellfile=~/.vim/spell/spell.UTF-8.add
 
-" Custom colorscheme
-colorscheme vombato 
+if has('gui_running')
+    " GUI colors
+    colorscheme vombato 
+else
+    " Non-GUI (terminal) colors
+    colorscheme wombat256mod
+endif
 
 " Statusbar
 set stl=[%1*%n%0*]\ "buffer number
@@ -268,3 +275,17 @@ autocmd BufReadPost *
 \ if line("'\"") > 0 && line ("'\"") <= line("$") |
 \ exe "normal! g'\"" |
 \ endif
+
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_linecolumn_prefix = '␊ '
+let g:airline_linecolumn_prefix = '␤ '
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline_fugitive_prefix = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+let g:airline_paste_symbol = 'Þ'
+let g:airline_paste_symbol = '∥'
+
+let g:airline_theme='badwolf'
