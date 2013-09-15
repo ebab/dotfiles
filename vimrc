@@ -19,7 +19,6 @@ Bundle 'vim-scripts/wombat256.vim'
 "Bundle 'tpope/vim-speeddating'
 "Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'mattn/zencoding-vim'
 "Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'vim-pandoc/vim-pandoc'
@@ -29,6 +28,7 @@ Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'bling/vim-airline'
+Bundle 'mattn/emmet-vim'
 
 command! -nargs=1 Silent
 \ | execute ':silent !'.<q-args>
@@ -68,6 +68,7 @@ syntax enable
 set backspace=eol,start,indent
 set mouse=a
 set completeopt=menu
+set t_Co=256
 
 " Mapleaders
 let mapleader=" "

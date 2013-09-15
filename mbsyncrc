@@ -2,7 +2,6 @@ IMAPAccount gmail
 # Address to connect to
 Host imap.gmail.com
 User ebabuschkin@gmail.com
-Pass pupschken77
 # Use SSL
 UseIMAPS yes
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
