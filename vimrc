@@ -6,11 +6,15 @@ set nocompatible
 
 filetype off
 set rtp+=~/.vim/bundle/vundle
+if has('win32') || has('win64')
+    set runtimepath+=~/vimfiles/bundle/vundle
+endif
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
 Bundle 'vombato-colorscheme'
+Bundle '/vundle'
+Bundle 'junegunn/goyo.vim'
 Bundle 'vim-scripts/wombat256.vim'
 "Bundle 'tpope/vim-fugitive'
 "Bundle 'tpope/vim-surround'
@@ -148,6 +152,8 @@ nmap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 " Conveniently inserting spaces
 nmap <silent> <leader><space> i<space><ESC>l
 
+nmap <silent> <leader>g :Goyo<CR>
+
 " Insert date
 nmap <F3> a<C-R>=strftime("%B %e, %Y")<CR><Esc>
 imap <F3> <C-R>=strftime("%B %e, %Y")<CR>
@@ -174,8 +180,14 @@ set autoread
 "set hidden
 
 " GUI options
-set guifont=DejaVu\ Sans\ Mono\ 10
 " set guifont=Source\ Code\ Pro\ 10
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=DejaVu\ Sans\ Mono\ 10
+  else
+    set guifont=DejaVu_Sans_Mono:h10:cDEFAULT
+  endif
+endif
 set guioptions-=m " Remove menubar
 set guioptions-=T " Remove toolbar
 set guioptions-=r " Remove right-hand scrollbar
