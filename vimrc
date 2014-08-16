@@ -1,304 +1,50 @@
-"=============================
-" Vim configuration file
-"=============================
-
 set nocompatible
-
 filetype off
-set rtp+=~/.vim/bundle/vundle
-if has('win32') || has('win64')
-    set runtimepath+=~/vimfiles/bundle/vundle
-endif
-call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'vombato-colorscheme'
-Bundle '/vundle'
-Bundle 'junegunn/goyo.vim'
-Bundle 'vim-scripts/wombat256.vim'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'tpope/vim-surround'
-"Bundle 'tpope/vim-repeat'
-"Bundle 'tpope/vim-commentary'
-"Bundle 'tpope/vim-speeddating'
-"Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/nerdtree'
-"Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'vim-pandoc/vim-pandoc'
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'SirVer/ultisnips'
-"Bundle 'guns/vim-clojure-static'
-Bundle 'scrooloose/syntastic'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'bling/vim-airline'
-Bundle 'mattn/emmet-vim'
+" Initialize Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-command! -nargs=1 Silent
-\ | execute ':silent !'.<q-args>
-\ | execute ':redraw!'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'bling/vim-airline'
+Plugin 'vim-scripts/twilight256.vim'
+Plugin 'dsolstad/vim-wombat256i'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'chikamichi/mediawiki.vim'
+Plugin 'tpope/vim-surround'
 
-let g:syntastic_mode_map = { 'mode' : 'passive',
-                            \ 'active_filetypes' : [],
-                            \ 'passive_filetypes' : [] }
+call vundle#end()
+filetype plugin indent on
 
-
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_min_num_of_chars_for_completion = 999
-let g:ycm_filetype_whitelist = { 'c': 1, 'cpp': 1 }
-let g:ycm_complete_in_comments_and_strings = 0
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_invoke_completion = '<c-h>'
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetsDir="~/.vim/snippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
-
-au BufNewFile,BufRead wscript* set filetype=python
-
-let g:jedi#show_function_definition = 0
-
-" Standard settings
-set enc=utf-8
-filetype plugin on
-filetype indent on
-set number
-set cinoptions+=L0
-syntax enable
-set backspace=eol,start,indent
-set mouse=a
-set completeopt=menu
+let g:airline_powerline_fonts = 1
 set t_Co=256
-
-" Mapleaders
-let mapleader=" "
-let maplocalleader=","
-
-" Spell check languages
-set spelllang=en,de
-set spellfile=~/.vim/spell/spell.UTF-8.add
-
-if has('gui_running')
-    " GUI colors
-    colorscheme vombato 
-else
-    " Non-GUI (terminal) colors
-    colorscheme wombat256mod
-endif
-
-" Statusbar
-set stl=[%1*%n%0*]\ "buffer number
-set stl+=%F\ "tail of the filename
-set stl+=[%{strlen(&fenc)?&fenc:'none'}]\ "file encoding
-set stl+=%m "modified flag
-set stl+=%2*%r%0* "read only flag (red)
-set stl+=%y\ "filetype
-set stl+=%= "left/right separator
-set stl+=%l/%L,\ "cursor line/total lines
-set stl+=%2c\ "cursor column
-set stl+=[%P] "percent through file
-
-" Statusbar always active
+syntax on
+colorscheme distinguished
+let g:airline_theme="wombat"
 set laststatus=2
-
-" Default indentation
-set autoindent
-set shiftwidth=4
 set tabstop=4
+set shiftwidth=4
 set expandtab
-
-if has("cscope")
-    set csto=0
-    set cst
-    set nocsverb
-" add any database in current directory
-    if filereadable("cscope.out")
-        cs add cscope.out
-" else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    endif
-    set csverb
-endif
-
-" Keep selection when changing indentation
-" (with temporary hack for tagging the cursor along)
-vnoremap < <gv4h
-vnoremap > >gv4l
-
-" Wrapping
-set nowrap
-
-" Searching
+set smarttab
+set showcmd
+set number
 set showmatch
 set hlsearch
+set incsearch
 set ignorecase
 set smartcase
-set magic
-set grepprg=grep\ -nH\ $*
-set incsearch
+set backspace=2
+set autoindent
+set textwidth=79
+set formatoptions=c,q,r,t
+set ruler
+set background=dark 
 
-" Can't live without these
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
+let g:syntastic_c_check_header = 1
 
-" Finding merge conflicts quickly
-nmap <silent> <leader>m <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
-" Conveniently inserting spaces
-nmap <silent> <leader><space> i<space><ESC>l
-
-nmap <silent> <leader>g :Goyo<CR>
-
-" Insert date
-nmap <F3> a<C-R>=strftime("%B %e, %Y")<CR><Esc>
-imap <F3> <C-R>=strftime("%B %e, %Y")<CR>
-
-" Quiet output
-set noshowcmd
-set noshowmode
-set noruler
-set noerrorbells
-set shortmess+=asI
-
-" Scrolling
-set scrolloff=12
-set sidescrolloff=3
-set sidescroll=1
-
-" Don't know if this does anything
-set ttyfast
-
-" Automatic reload
-set autoread
-
-" Don't force me to save when switching buffers
-"set hidden
-
-" GUI options
-" set guifont=Source\ Code\ Pro\ 10
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=DejaVu\ Sans\ Mono\ 10
-  else
-    set guifont=DejaVu_Sans_Mono:h10:cDEFAULT
-  endif
-endif
-set guioptions-=m " Remove menubar
-set guioptions-=T " Remove toolbar
-set guioptions-=r " Remove right-hand scrollbar
-set guioptions-=L " Remove left-hand scrollbar
-
-" Hidden character toggling
-set nolist
-set listchars=tab:»\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-noremap <silent><leader>l :set list!<CR>
-autocmd Filetype python map <buffer> <silent><leader>i :call system("ipython kernel &")<CR>:sleep 1<CR>:IPython<CR>
-
-" Show linebreaks
-set showbreak=↪
-
-" select EVERYTHING!
-map <Leader>a ggVG
-
-map <Leader>j :make<CR>
-
-" Highlight current line
-noremap <leader>h :set cursorline!<CR>
-
-" Toggle line numbers
-noremap <leader>n :set number!<CR>
-
-" Quick window splitting
-nnoremap <leader>w <C-w>v<C-w>l
-
-" Faster window navigation with alt
-" (even in the terminal)
-nnoremap h <C-w>h
-nnoremap j <C-w>j
-nnoremap k <C-w>k
-nnoremap l <C-w>l
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
-
-" Window dimensions for splits
-set noequalalways
-
-" Y works like D
-noremap Y y$
-
-" Clear search
-noremap <silent><Leader>/ :nohls<CR>
-
-set backupdir=~/.vim/backup
-set noswapfile
-
-" Undo settings
-set undofile
-set undodir=~/.vim/undodir
-set undolevels=1000
-set undoreload=10000
-
-" EasyMotion settings
-let g:EasyMotion_leader_key = "<Leader>"
-
-" Gundo settings
-let g:gundo_width = 55
-noremap <F5> :GundoToggle<CR>
-
-" File menu
-set wildmenu
-set wildignorecase
-set wildignore=*.o,*.obj,*.bak,*.exe,*.so,*.class,*.hi,*.jpg,*.png,*.zip,*.tar,*.tar.gz
-set wildmode=list:longest,full
-
-" Ignored in completion
-set suffixes=.bak,~,.h,.info,.swp,.obj,.class
-
-" Fugitive settings
-au bufwritepost fugitive://* set bufhidden=delete
-
-" NERDTree settings
-nmap <silent> <F7> :NERDTreeToggle<CR>
-let NERDTreeShowHidden=0
-
-" sudo write this
-cmap W! silent w !sudo tee % >/dev/null
-
-" More convenient copy/paste for the + register
-noremap <leader>y "+y
-noremap <leader>Y "+Y
-noremap <leader>p "+p
-noremap <leader>P "+P
-
-" Execute Python and show output
-function! ReadPyResults_buffer()
-    exe join(['w | new | setl bt=nofile | r !/usr/bin/env python ', expand('%:p')], '')
-endfunction
-nnoremap <Leader>r :execute ReadPyResults_buffer()<CR>
-
-"When editing a file, always jump to the last cursor position
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-\ exe "normal! g'\"" |
-\ endif
-
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_linecolumn_prefix = '␊ '
-let g:airline_linecolumn_prefix = '␤ '
-let g:airline_linecolumn_prefix = '¶ '
-let g:airline_fugitive_prefix = '⎇ '
-let g:airline_paste_symbol = 'ρ'
-let g:airline_paste_symbol = 'Þ'
-let g:airline_paste_symbol = '∥'
-
-let g:airline_theme='badwolf'
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
