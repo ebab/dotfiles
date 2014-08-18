@@ -41,6 +41,10 @@ set textwidth=79
 set formatoptions=c,q,r,t
 set ruler
 set background=dark 
+" Shut up, vim.
+set noerrorbells
+set vb
+set t_vb= 
 
 let g:syntastic_c_check_header = 1
 
@@ -48,3 +52,7 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+
+" Keep those swap files out of my sight
+set backupdir=~/.vimtmp,.
+set directory=~/.vimtmp,.
