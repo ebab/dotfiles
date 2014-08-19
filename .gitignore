@@ -1,6 +1,5 @@
 # Ingore the bundles!
-vim/bundle/
+vim/.vim/bundle/
 
 # But not vundle!
-!vim/bundle/vundle/
-!vim/bundle/.vundle/
+!vim/.vim/bundle/Vundle.vim/
