@@ -67,6 +67,10 @@ alias music=ncmpcpp
 alias pylab='ipython --pylab'
 alias open='mimeo'
 alias spawn='urxvt -e "cd $(pwd); vim"'
+alias tn='ssh maze@totallynuclear.club -t tmux a'
+alias reboot='systemctl reboot'
+alias shutdown='systemctl shutdown'
+alias chromium='chromium --force-device-scale-factor=2'
 
 if [ -f "/usr/bin/root" ]
 then
@@ -85,7 +89,8 @@ if [[ "$TERM" =~ ".*-256color" ]]; then
     local light="237"
 
     jobsprompt="%(1j.%F{yellow}[%j]%f.)"
-    promptmarker="%K{$light}%F{$dark}%K{$light}%k%F{$light}%f"
+    # promptmarker="%K{$light}%F{$dark}%K{$light}%k%F{$light}%f"
+    promptmarker="%F{green}%#%f"
     foldersegment="%F{$dark}%K{$dark}%F{$primary}%~ %F{232}%f%k"
     usernamesegment="%K{$dark}%F{$primary}%n%f%k"
     sshsegment="%K{$dark}%F{223}@%m%f%k"
@@ -160,5 +165,16 @@ then
       fi
     }
 fi
+
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
 
 #alias note="python ~/note/note.py"

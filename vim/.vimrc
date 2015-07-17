@@ -1,33 +1,48 @@
+" Erik's .vimrc
+" =============
+
 set nocompatible
 filetype off
 
-" Initialize Vundle
+" Vundle
+" ------
+
+" Initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Plugins
 Plugin 'gmarik/Vundle.vim'
-Plugin 'Lokaltog/vim-distinguished'
 Plugin 'bling/vim-airline'
-Plugin 'vim-scripts/twilight256.vim'
-Plugin 'dsolstad/vim-wombat256i'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'chikamichi/mediawiki.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'cespare/vim-toml'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'morhetz/gruvbox'
+Plugin 'digitaltoad/vim-jade.git'
 
 call vundle#end()
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 filetype plugin indent on
 
-let g:airline_powerline_fonts = 1
-set t_Co=256
-syntax on
-colorscheme distinguished
-let g:airline_theme="wombat"
+
+" Preferences
+" -----------
+
+" Status line
 set laststatus=2
+set ruler
+
+" Tabs and spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
+
 set showcmd
 set number
 set showmatch
@@ -39,20 +54,50 @@ set backspace=2
 set autoindent
 set textwidth=79
 set formatoptions=c,q,r,t
-set ruler
 set background=dark 
-" Shut up, vim.
+
+" No beeping/flashing
 set noerrorbells
 set vb
 set t_vb= 
 
-let g:syntastic_c_check_header = 1
-
+" Hide gvim GUI
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-" Keep those swap files out of my sight
+" Save swap files to .vimtmp, thus keeping them out of my sight.
 set backupdir=~/.vimtmp,.
 set directory=~/.vimtmp,.
+
+" Show tabs and trailing characters.
+set listchars=tab:»·,trail:·
+set list
+
+" Plugin settings
+" ---------------
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme="wombat"
+
+
+" Shortcuts
+" ---------
+
+let mapleader="\<Space>"
+
+" Easier split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Colors
+set t_Co=256
+syntax on
+colorscheme distinguished
+
+" HTML indentation
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
