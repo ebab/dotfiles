@@ -1,1 +1,5 @@
 bundle/
+backup/**
+!backup/README.md
+undodir/**
+!undodir/README.md
