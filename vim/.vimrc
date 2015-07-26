@@ -25,8 +25,6 @@ Plugin 'digitaltoad/vim-jade.git'
 
 call vundle#end()
 
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 filetype plugin indent on
 
 
@@ -86,6 +84,8 @@ set list
 let g:airline_powerline_fonts = 1
 let g:airline_theme="wombat"
 
+:let g:netrw_dirhistmax = 0
+
 
 " Shortcuts
 " ---------
@@ -102,9 +102,6 @@ map <C-l> <C-w>l
 set t_Co=256
 syntax on
 colorscheme distinguished
-
-" HTML indentation
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
