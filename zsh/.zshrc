@@ -14,6 +14,7 @@ stty stop undef
 
 export EDITOR=vim
 export GOPATH=$HOME/Code/Go
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 if [ "$COLORTERM" = "gnome-terminal" ]; then
     export TERM=xterm-256color
@@ -70,7 +71,6 @@ alias spawn='urxvt -e "cd $(pwd); vim"'
 alias tn='ssh maze@totallynuclear.club -t tmux a'
 alias reboot='systemctl reboot'
 alias shutdown='systemctl shutdown'
-alias chromium='chromium --force-device-scale-factor=2'
 
 if [ -f "/usr/bin/root" ]
 then
