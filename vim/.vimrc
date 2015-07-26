@@ -67,9 +67,13 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-" Save swap files to .vimtmp, thus keeping them out of my sight.
-set backupdir=~/.vimtmp,.
-set directory=~/.vimtmp,.
+set backupdir=~/.vim/backup
+set noswapfile
+
+set undofile
+set undodir=~/.vim/undodir
+set undolevels=1000
+set undoreload=10000
 
 " Show tabs and trailing characters.
 set listchars=tab:»·,trail:·
@@ -101,3 +105,9 @@ colorscheme distinguished
 
 " HTML indentation
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+\   exe "normal! g'\"" |
+\ endif
