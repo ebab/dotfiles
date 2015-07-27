@@ -100,11 +100,12 @@ let g:airline_mode_map = {
     \ 'c'  : 'C',
     \ 'v'  : '♐',
     \ 'V'  : '♐',
-    \ '' : '♐',
+    \ '' : '♐',
     \ 's'  : 'S',
     \ 'S'  : 'S',
-    \ '' : 'S',
+    \ '' : 'S',
     \ }
+
 let g:airline#extensions#bufferline#overwrite_variables = 1
 
 let g:netrw_dirhistmax = 0
