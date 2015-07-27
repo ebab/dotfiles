@@ -81,10 +81,33 @@ set list
 " ---------------
 
 " Airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
+let g:airline_section_z = "%3l/%L,%2c"
+let g:airline_section_warning=""
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s:'
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_theme="wombat"
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : '∅',
+    \ 'i'  : 'Ϟ',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : '♐',
+    \ 'V'  : '♐',
+    \ '' : '♐',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ }
+let g:airline#extensions#bufferline#overwrite_variables = 1
 
-:let g:netrw_dirhistmax = 0
+let g:netrw_dirhistmax = 0
 
 
 " Shortcuts
