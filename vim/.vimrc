@@ -13,8 +13,12 @@ call vundle#begin()
 
 " Plugins
 Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'mattn/emmet-vim'
 Plugin 'chikamichi/mediawiki.vim'
+Plugin 'vim-easy-align'
+Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'cespare/vim-toml'
 Plugin 'w0ng/vim-hybrid'
@@ -110,6 +114,13 @@ let g:airline#extensions#bufferline#overwrite_variables = 1
 
 let g:netrw_dirhistmax = 0
 
+" Gundo
+let g:gundo_width = 55
+noremap <F5> :GundoToggle<CR>
+
+" Easy Align
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " Shortcuts
 " ---------
