@@ -15,7 +15,7 @@ xft.dpi:				300
 !xft.hintstyle:			hintfull
 
 ! urxvt settings:
-*font:             xft:Dejavu Sans Mono for Powerline:pixelsize=18
+urxvt*font:             xft:Dejavu Sans Mono for Powerline:pixelsize=18
 !urxvt*font:              -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
 !urxvt*font:             xft:Source Code Pro:pixelsize=13
 !urxvt*font:             xft:Menlo:pixelsize=13
