@@ -52,14 +52,12 @@ bindkey '^x^e' edit-command-line
 
 alias ip='ip -4' # for now
 alias ccat='pygmentize -f terminal256'
-alias ipython3=ipython
 alias ls='ls --color=auto -Fh --group-directories-first'
 alias ll='ls -Fhla --color=force | less -R'
 alias -- '+x'='chmod +x'
 alias -- '-x'='chmod -x'
 alias ssh='ssh -q'
 alias tb='ls ~/.local/share/Trash/files'
-alias wat='aplay ~/Documents/wat.wav > /dev/null 2>&1 &|'
 alias git='noglob git'
 alias curl='noglob curl'
 alias t='tree -F --noreport'
@@ -68,7 +66,6 @@ alias music=ncmpcpp
 alias pylab='ipython --pylab'
 alias open='mimeo'
 alias spawn='urxvt -e "cd $(pwd); vim"'
-alias tn='ssh maze@totallynuclear.club -t tmux a'
 alias reboot='systemctl reboot'
 alias shutdown='systemctl shutdown'
 
@@ -76,10 +73,6 @@ if [ -f "/usr/bin/root" ]
 then
     alias root='root -l'
 fi
-
-function emacs {
-    /usr/bin/emacsclient -c $@ &|
-}
 
 # Prompt
 
